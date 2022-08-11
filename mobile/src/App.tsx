@@ -5,7 +5,7 @@ import * as WebBrowser from 'expo-web-browser';
 
 interface Props {}
 
-const link = 'http://localhost:3000';
+const link = 'https://192.168.1.14:3000';
 
 const App = (props: Props) => {
   const onPressAuthSesh = async () => {
@@ -20,19 +20,7 @@ const App = (props: Props) => {
     <View style={styles.container}>
       <Button title="open auth session" onPress={onPressAuthSesh} />
       <Button title="open web browser" onPress={onPressOpenBrowser} />
-      <WebView
-        //        originWhitelist={['*']}
-        source={{uri: link}}
-        style={{marginTop: 20}}
-        onError={syntheticEvent => {
-          const {nativeEvent} = syntheticEvent;
-          console.log('WebView error: ', nativeEvent);
-        }}
-        onLoad={syntheticEvent => {
-          console.log('🚀 ~ on load');
-        }}
-        onHttpError={() => console.log('http error')}
-      />
+      <WebView source={{uri: link}} style={{marginTop: 20}} />
     </View>
   );
 };
